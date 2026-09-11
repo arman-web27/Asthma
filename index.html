@@ -404,32 +404,75 @@
         font-size: 11px;
         margin-top: 9px;
       }
+      #faq{
+        background: linear-gradient(180deg, #fffdf6 0%, #f2f8f4 100%);
+      }
+      #faq .head{ margin-bottom: 24px; }
+      #faq .faq-list{ display: grid; gap: 12px; }
       .faq{
-        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        border: 1px solid #d5e4da;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 7px 18px #15594f0d;
+        transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+      }
+      .faq.open{
+        border-color: #9bc4af;
+        box-shadow: 0 10px 26px #15594f16;
       }
       .faq button{
         width: 100%;
         border: 0;
-        background: none;
-        padding: 15px 0;
+        background: transparent;
+        padding: 17px 18px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
+        gap: 14px;
         text-align: left;
-        font: 600 16px Hind;
+        font: 600 16px/1.55 Hind, sans-serif;
         color: var(--ink);
+        cursor: pointer;
       }
+      .faq.open button{ color: var(--plum); background: #f6fbf7; }
       .faq button span{
+        display: grid;
+        place-items: center;
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--blush);
         color: var(--plum);
-        font-size: 20px;
+        font-size: 21px;
+        line-height: 1;
+        transition: transform .25s ease, background .25s ease, color .25s ease;
+      }
+      .faq.open button span{
+        background: var(--plum);
+        color: #fff;
+        transform: rotate(180deg);
       }
       .answer{
-        display: none;
-        padding-bottom: 15px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding: 0 18px;
         color: var(--muted);
         font-size: 14px;
+        line-height: 1.75;
+        transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
       }
       .faq.open .answer{
-        display: block;
+        max-height: 420px;
+        opacity: 1;
+        padding: 0 18px 17px;
+      }
+      @media (max-width: 360px){
+        .faq button{ padding: 15px 14px; font-size: 15px; }
+        .answer{ padding-left: 14px; padding-right: 14px; }
+        .faq.open .answer{ padding-left: 14px; padding-right: 14px; }
       }
       .disclaimer{
         padding: 12px 10px 4px;
@@ -959,7 +1002,7 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
       DAILY HERBAL SUPPORT
      </div>
      <h2 id="product-title">
-      अब अपनी Respiratory Wellness को दें Daily Herbal Support 🌿
+      अब ASTHMA-EX Powder के साथ अपनी सांसों की Care को दें Daily Herbal Support 🌿
      </h2>
      <p class="product-subtitle">
       प्रकृति से प्रेरित। आपकी रोज़ की care के लिए।
@@ -981,65 +1024,7 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
       </small>
      </figcaption>
     </figure>
-    <div class="product-wellness">
-     <div class="product-benefits-label">
-      YOUR DAILY WELLNESS SUPPORT
-     </div>
-     <ul class="product-benefits">
-      <li>
-       <div>
-        <span aria-hidden="true" class="product-benefit-number">
-         01
-        </span>
-        <strong>
-         Natural Herbal Powder
-        </strong>
-        <p>
-         100 gm का convenient herbal powder formulation, जिसे label पर दिए गए directions के अनुसार अपनी daily wellness routine में शामिल किया जा सकता है।
-        </p>
-       </div>
-      </li>
-      <li>
-       <div>
-        <span aria-hidden="true" class="product-benefit-number">
-         02
-        </span>
-        <strong>
-         Respiratory Wellness Support
-        </strong>
-        <p>
-         Overall respiratory health और lungs wellness को support करने पर focused formulation।
-        </p>
-       </div>
-      </li>
-      <li>
-       <div>
-        <span aria-hidden="true" class="product-benefit-number">
-         03
-        </span>
-        <strong>
-         Everyday Breathing Wellness
-        </strong>
-        <p>
-         Regular respiratory care के साथ everyday breathing comfort और wellness को support करने के उद्देश्य से।
-        </p>
-       </div>
-      </li>
-      <li>
-       <div>
-        <span aria-hidden="true" class="product-benefit-number">
-         04
-        </span>
-        <strong>
-         Pollution के बीच Respiratory Care
-        </strong>
-        <p>
-         Dust, pollution और बदलते environmental conditions के बीच respiratory wellness पर consistent ध्यान बनाए रखने के लिए supportive care।
-        </p>
-       </div>
-      </li>
-     </ul>
-    </div>
+    
     <a class="cta product-cta" href="#order-form">
      ASTHMA-EX के साथ Daily Support →
     </a>
@@ -1205,207 +1190,7 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
      </li>
     </ol>
    </section>
-   <section aria-labelledby="before-after-title" class="soft" id="before-after">
-    <div class="head">
-     <div class="kicker">
-      BEFORE &amp; AFTER
-     </div>
-     <h2 id="before-after-title">
-      पहले की परेशानी से बेहतर Respiratory Routine की ओर
-     </h2>
-    </div>
-    <div class="comparison-grid">
-     <div class="comparison-column before">
-      <h3>
-       BEFORE — पहले
-      </h3>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before1.jpg" width="360"/>
-       </figure>
-       <h4>
-        बार-बार सांस फूलना
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before2.webp" width="360"/>
-       </figure>
-       <h4>
-        रात में खांसी
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before3.jpg" width="360"/>
-       </figure>
-       <h4>
-        सीने में जकड़न
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before4.jpg" width="360"/>
-       </figure>
-       <h4>
-        Triggers से परेशानी
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before5.jpg" width="360"/>
-       </figure>
-       <h4>
-        Daily Routine प्रभावित
-       </h4>
-      </div>
-     </div>
-     <div class="comparison-column after">
-      <h3>
-       AFTER — बाद में
-      </h3>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after1.jpg" width="360"/>
-       </figure>
-       <h4>
-        Symptoms पर बेहतर Control
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after2.jpg" width="360"/>
-       </figure>
-       <h4>
-        बेहतर Sleep Routine
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after3.jpg" width="360"/>
-       </figure>
-       <h4>
-        Daily Activities में बेहतर Comfort
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after4.jpg" width="360"/>
-       </figure>
-       <h4>
-        Triggers की बेहतर समझ
-       </h4>
-      </div>
-      <div class="comparison-item">
-       <figure class="comparison-point-photo">
-        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after5.jpg" width="360"/>
-       </figure>
-       <h4>
-        Consistent Respiratory Care
-       </h4>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section aria-labelledby="stories-title" class="soft customer-experiences" id="stories">
-    <div class="head">
-     <div class="kicker">
-      CUSTOMER STORIES
-     </div>
-     <h2 id="stories-title">
-      लोगों के अनुभव, उनकी जुबानी
-     </h2>
-     <p class="story-disclosure">
-      काल्पनिक उदाहरण — वास्तविक ग्राहक समीक्षाएं नहीं।
-     </p>
-    </div>
-    <div class="customer-reviews">
-     <article class="card review">
-      <div class="review-person">
-       <span class="review-avatar initials">
-        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test1.avif" width="240"/>
-        <span>
-         RS
-        </span>
-       </span>
-       <div>
-        <strong>
-         Rajesh Sharma
-        </strong>
-        <small>
-         📍 Jaipur, Rajasthan • Age 46
-        </small>
-       </div>
-      </div>
-      <blockquote>
-       <p>
-        “पहले धूल और मौसम बदलने पर मुझे खांसी और सांस से जुड़ी परेशानी महसूस होती थी। अपनी regular care और doctor की guidance के साथ मैंने इस herbal wellness routine को भी follow किया। इसे daily routine में शामिल करना मेरे लिए काफी आसान रहा।”
-       </p>
-      </blockquote>
-      <div class="review-rating">
-       <span aria-label="5 out of 5 stars" class="stars">
-        ★★★★★
-       </span>
-      </div>
-     </article>
-     <article class="card review">
-      <div class="review-person">
-       <span class="review-avatar initials">
-        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test2.jpg" width="240"/>
-        <span>
-         SV
-        </span>
-       </span>
-       <div>
-        <strong>
-         Sunita Verma
-        </strong>
-        <small>
-         📍 Lucknow, Uttar Pradesh • Age 41
-        </small>
-       </div>
-      </div>
-      <blockquote>
-       <p>
-        “रात में होने वाली खांसी की वजह से मेरी sleep routine काफी disturb रहती थी। मैंने अपनी prescribed treatment के साथ respiratory wellness पर ज्यादा ध्यान देना शुरू किया। Regular routine follow करने के बाद overall experience अच्छा रहा।”
-       </p>
-      </blockquote>
-      <div class="review-rating">
-       <span aria-label="5 out of 5 stars" class="stars">
-        ★★★★★
-       </span>
-      </div>
-     </article>
-     <article class="card review">
-      <div class="review-person">
-       <span class="review-avatar initials">
-        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test3.jpg" width="240"/>
-        <span>
-         AP
-        </span>
-       </span>
-       <div>
-        <strong>
-         Amit Patel
-        </strong>
-        <small>
-         📍 Ahmedabad, Gujarat • Age 52
-        </small>
-       </div>
-      </div>
-      <blockquote>
-       <p>
-        “Pollution और बदलते मौसम में मुझे respiratory discomfort ज्यादा महसूस होता था। Doctor की सलाह और अपनी regular medicines के साथ मैंने daily wellness routine को consistent रखा। Product को routine में शामिल करना convenient लगा और मेरा overall experience positive रहा।”
-       </p>
-      </blockquote>
-      <div class="review-rating">
-       <span aria-label="5 out of 5 stars" class="stars">
-        ★★★★★
-       </span>
-      </div>
-     </article>
-    </div>
-   </section>
+
    <section aria-labelledby="ingredients-title" class="ingredients" id="ingredients">
     <div class="head">
      <div class="kicker">
@@ -1435,9 +1220,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          तुलसी (Tulsi)
         </h3>
-        <strong>
-         Daily Respiratory Wellness Support
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1462,9 +1244,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          मुलेठी (Mulethi)
         </h3>
-        <strong>
-         Throat &amp; Respiratory Support
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1489,9 +1268,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          वासा / अडूसा (Vasaka)
         </h3>
-        <strong>
-         Traditional Respiratory Herb
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1516,9 +1292,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          पिप्पली (Pippali)
         </h3>
-        <strong>
-         Traditional Ayurvedic Support
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1543,9 +1316,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          सोंठ (Dry Ginger)
         </h3>
-        <strong>
-         Everyday Wellness Support
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1570,9 +1340,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         <h3>
          कंठकारी (Kantakari)
         </h3>
-        <strong>
-         Respiratory Wellness Herb
-        </strong>
        </footer>
        <div class="ingredient-detail">
         <p>
@@ -1677,60 +1444,112 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
        </div>
       </article>
      </li>
-     <li class="usage-guide-step">
-      <article class="usage-guide-card">
-       <div class="usage-hexagon">
-        <div class="usage-photo">
-         <img alt="" decoding="async" height="480" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/use4.jpg" width="720"/>
-         <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" viewbox="0 0 24 24">
-          <path d="M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4ZM8 12l3 3 5-6">
-          </path>
-         </svg>
-        </div>
-       </div>
-       <div class="usage-instruction">
-        <div class="usage-step-heading">
-         <span aria-hidden="true" class="usage-flow-number">
-          04
-         </span>
-         <h3>
-          अपनी Asthma Treatment जारी रखें
-         </h3>
-        </div>
-        <p>
-         Doctor द्वारा prescribed inhaler या medicines को नियमित रूप से लेते रहें। Herbal product के कारण उन्हें अपने आप बंद या कम न करें।
-        </p>
-       </div>
-      </article>
-     </li>
-     <li class="usage-guide-step">
-      <article class="usage-guide-card">
-       <div class="usage-hexagon">
-        <div class="usage-photo">
-         <img alt="" decoding="async" height="480" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/use5.jpg" width="720"/>
-         <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" viewbox="0 0 24 24">
-          <path d="M4 3v5a5 5 0 0 0 10 0V3M9 13v3a5 5 0 0 0 10 0v-3M2 3h4m6 0h4M19 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4">
-          </path>
-         </svg>
-        </div>
-       </div>
-       <div class="usage-instruction">
-        <div class="usage-step-heading">
-         <span aria-hidden="true" class="usage-flow-number">
-          05
-         </span>
-         <h3>
-          Guidance के साथ इस्तेमाल करें
-         </h3>
-        </div>
-        <p>
-         अगर आप पहले से medicines ले रहे हैं, pregnant हैं, breastfeeding कर रही हैं या कोई medical condition है, तो इस्तेमाल से पहले healthcare professional से सलाह लें।
-        </p>
-       </div>
-      </article>
-     </li>
     </ol>
    </section>
+
+      <section aria-labelledby="before-after-title" class="soft" id="before-after">
+    <div class="head">
+     <div class="kicker">
+      BEFORE &amp; AFTER
+     </div>
+     <h2 id="before-after-title">
+      पहले की परेशानी से बेहतर Respiratory Routine की ओर
+     </h2>
+    </div>
+    <div class="comparison-grid">
+     <div class="comparison-column before">
+      <h3>
+       BEFORE — पहले
+      </h3>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before1.jpg" width="360"/>
+       </figure>
+       <h4>
+        बार-बार सांस फूलना
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before2.webp" width="360"/>
+       </figure>
+       <h4>
+        रात में खांसी
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before3.jpg" width="360"/>
+       </figure>
+       <h4>
+        सीने में जकड़न
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before4.jpg" width="360"/>
+       </figure>
+       <h4>
+        Triggers से परेशानी
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/before5.jpg" width="360"/>
+       </figure>
+       <h4>
+        Daily Routine प्रभावित
+       </h4>
+      </div>
+     </div>
+     <div class="comparison-column after">
+      <h3>
+       AFTER — बाद में
+      </h3>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after1.jpg" width="360"/>
+       </figure>
+       <h4>
+        Symptoms पर बेहतर Control
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after2.jpg" width="360"/>
+       </figure>
+       <h4>
+        बेहतर Sleep Routine
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after3.jpg" width="360"/>
+       </figure>
+       <h4>
+        Daily Activities में बेहतर Comfort
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after4.jpg" width="360"/>
+       </figure>
+       <h4>
+        Triggers की बेहतर समझ
+       </h4>
+      </div>
+      <div class="comparison-item">
+       <figure class="comparison-point-photo">
+        <img alt="" decoding="async" height="360" loading="lazy" onerror="this.hidden=true" onload="this.hidden=false" src="images/after5.jpg" width="360"/>
+       </figure>
+       <h4>
+        Consistent Respiratory Care
+       </h4>
+      </div>
+     </div>
+    </div>
+   </section>
+
    <section aria-labelledby="quality-title" class="sage quality-section" id="quality">
     <div class="head">
      <div class="kicker">
@@ -1885,6 +1704,107 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
      </form>
     </div>
    </section>
+
+      <section aria-labelledby="stories-title" class="soft customer-experiences" id="stories">
+    <div class="head">
+     <div class="kicker">
+      CUSTOMER STORIES
+     </div>
+     <h2 id="stories-title">
+      लोगों के अनुभव, उनकी जुबानी
+     </h2>
+     <p class="story-disclosure">
+      काल्पनिक उदाहरण — वास्तविक ग्राहक समीक्षाएं नहीं।
+     </p>
+    </div>
+    <div class="customer-reviews">
+     <article class="card review">
+      <div class="review-person">
+       <span class="review-avatar initials">
+        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test1.avif" width="240"/>
+        <span>
+         RS
+        </span>
+       </span>
+       <div>
+        <strong>
+         Rajesh Sharma
+        </strong>
+        <small>
+         📍 Jaipur, Rajasthan • Age 46
+        </small>
+       </div>
+      </div>
+      <blockquote>
+       <p>
+        “पहले धूल और मौसम बदलने पर मुझे खांसी और सांस से जुड़ी परेशानी महसूस होती थी। अपनी regular care और doctor की guidance के साथ मैंने इस herbal wellness routine को भी follow किया। इसे daily routine में शामिल करना मेरे लिए काफी आसान रहा।”
+       </p>
+      </blockquote>
+      <div class="review-rating">
+       <span aria-label="5 out of 5 stars" class="stars">
+        ★★★★★
+       </span>
+      </div>
+     </article>
+     <article class="card review">
+      <div class="review-person">
+       <span class="review-avatar initials">
+        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test2.jpg" width="240"/>
+        <span>
+         SV
+        </span>
+       </span>
+       <div>
+        <strong>
+         Sunita Verma
+        </strong>
+        <small>
+         📍 Lucknow, Uttar Pradesh • Age 41
+        </small>
+       </div>
+      </div>
+      <blockquote>
+       <p>
+        “रात में होने वाली खांसी की वजह से मेरी sleep routine काफी disturb रहती थी। मैंने अपनी prescribed treatment के साथ respiratory wellness पर ज्यादा ध्यान देना शुरू किया। Regular routine follow करने के बाद overall experience अच्छा रहा।”
+       </p>
+      </blockquote>
+      <div class="review-rating">
+       <span aria-label="5 out of 5 stars" class="stars">
+        ★★★★★
+       </span>
+      </div>
+     </article>
+     <article class="card review">
+      <div class="review-person">
+       <span class="review-avatar initials">
+        <img alt="" decoding="async" height="240" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.remove('has-photo')" onload="this.hidden=false;this.parentElement.classList.add('has-photo')" src="images/test3.jpg" width="240"/>
+        <span>
+         AP
+        </span>
+       </span>
+       <div>
+        <strong>
+         Amit Patel
+        </strong>
+        <small>
+         📍 Ahmedabad, Gujarat • Age 52
+        </small>
+       </div>
+      </div>
+      <blockquote>
+       <p>
+        “Pollution और बदलते मौसम में मुझे respiratory discomfort ज्यादा महसूस होता था। Doctor की सलाह और अपनी regular medicines के साथ मैंने daily wellness routine को consistent रखा। Product को routine में शामिल करना convenient लगा और मेरा overall experience positive रहा।”
+       </p>
+      </blockquote>
+      <div class="review-rating">
+       <span aria-label="5 out of 5 stars" class="stars">
+        ★★★★★
+       </span>
+      </div>
+     </article>
+    </div>
+   </section>
+
    <section aria-labelledby="faq-title" class="" id="faq">
     <div class="head">
      <div class="kicker">
@@ -2085,17 +2005,47 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
   <script>
    const $ = (s) => document.querySelector(s),
         $$ = (s) => [...document.querySelectorAll(s)];
-      $$(".faq button").forEach(
-        (b) =>
-          (b.onclick = () => {
-            const f = b.parentElement;
-            f.classList.toggle("open");
-            b.setAttribute("aria-expanded", String(f.classList.contains("open")));
-            b.querySelector("span").textContent = f.classList.contains("open")
-              ? "−"
-              : "+";
-          }),
-      );
+      const faqItems = $$(".faq");
+      faqItems.forEach((faq) => {
+        const button = faq.querySelector("button");
+        const icon = button.querySelector("span");
+
+        button.addEventListener("click", () => {
+          const willOpen = !faq.classList.contains("open");
+
+          faqItems.forEach((item) => {
+            item.classList.remove("open");
+            const itemButton = item.querySelector("button");
+            itemButton.setAttribute("aria-expanded", "false");
+            itemButton.querySelector("span").textContent = "+";
+          });
+
+          if (willOpen) {
+            faq.classList.add("open");
+            button.setAttribute("aria-expanded", "true");
+            icon.textContent = "−";
+
+            requestAnimationFrame(() => {
+              const rect = faq.getBoundingClientRect();
+              if (rect.top < 12 || rect.bottom > window.innerHeight - 12) {
+                faq.scrollIntoView({ behavior: "smooth", block: "nearest" });
+              }
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const id = link.getAttribute("href");
+          if (!id || id === "#") return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
       function stickyState() {
         const h = $("#hero").getBoundingClientRect(),
           f = $("#order-form").getBoundingClientRect();
