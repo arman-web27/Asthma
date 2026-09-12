@@ -1677,7 +1677,7 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
        <label for="name">
         आपका नाम / Full Name *
        </label>
-       <input autocomplete="name" id="name" maxlength="100" minlength="2" name="Name" placeholder="अपना नाम दर्ज करें" required=""/>
+       <input autocomplete="name" id="name" maxlength="100" minlength="2" name="Name" pattern="[A-Za-z ]+" placeholder="अपना नाम दर्ज करें" required="" title="Use letters and spaces only"/>
       </div>
       <div class="field">
        <label for="phone">
@@ -2002,6 +2002,9 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
     </div>
    </div>
   </main>
+  <script src="secure-form.js"></script>
+
+  <script src="script.js"></script>
   <script>
    const $ = (s) => document.querySelector(s),
         $$ = (s) => [...document.querySelectorAll(s)];
@@ -2058,17 +2061,6 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
       stickyState();
  
       addEventListener('resize', stickyState);
-      const orderForm = $('#orderForm');
-      orderForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = $('#name');
-        name.value = name.value.trim();
-        name.setCustomValidity(name.value.length < 2 ? 'कृपया अपना पूरा नाम दर्ज करें।' : '');
-        if (!orderForm.reportValidity()) return;
-        $('#orderStatus').textContent = 'Online booking अभी उपलब्ध नहीं है। Order के लिए +91 88606 06078 पर संपर्क करें। आपकी details भेजी नहीं गई हैं।';
-      });
-      $('#name').addEventListener('input', () => $('#name').setCustomValidity(''));
-      $('#phone').addEventListener('input', () => { $('#phone').value = $('#phone').value.replace(/[^0-9]/g, '').slice(0, 10); });
       let modalTrigger;
       document.addEventListener('keydown', (event) => {
         if (!$('#modal').classList.contains('show')) return;
@@ -2098,7 +2090,7 @@ h1{line-height:1.5;font-size:31px}.hero{padding:0}.asthma-icon{display:block;wid
         terms: `<div class="pp-mtitle">${ICO.doc}<h2 id="policy-title">Terms &amp; Conditions</h2></div><div class="pp-mbadge">Please read carefully</div><p class="pp-mpara">Asthma का उपयोग करके आप इन terms से सहमत होते हैं:</p><ul class="pp-mlist"><li>Product results व्यक्ति-दर-व्यक्ति अलग हो सकते हैं</li><li>यह product किसी बीमारी का इलाज नहीं है — एक Ayurvedic wellness supplement है</li><li>18 वर्ष से कम आयु के व्यक्ति बिना guardian consent के order न करें</li><li>Fake/fraudulent orders के लिए legal action लिया जा सकता है</li><li>Product images केवल representation के लिए हैं</li></ul><div class="pp-mhl">Asthma किसी भी समय बिना prior notice के prices, offers या terms बदलने का अधिकार रखता है।</div>`,
         shipping: `<div class="pp-mtitle">${ICO.truck}<h2 id="policy-title">Shipping Policy</h2></div><div class="pp-mbadge">Free Delivery All India</div><p class="pp-mpara">हम पूरे India में FREE shipping प्रदान करते हैं। Delivery timeline:</p><ul class="pp-mlist"><li>Metro cities (Delhi, Mumbai, Bengaluru): 3–5 business days</li><li>Tier-2 / Tier-3 cities: 5–7 business days</li><li>Remote / rural areas: 7–10 business days</li></ul><div class="pp-mhl">Order confirm होने के 24–48 घंटे के अंदर tracking number SMS/WhatsApp पर भेजा जाएगा।</div><ul class="pp-mlist"><li>Delivery attempt 3 बार की जाएगी — उसके बाद order वापस आ जाएगा</li><li>Incorrect address की जिम्मेदारी customer की होगी</li></ul>`,
         cancel: `<div class="pp-mtitle">${ICO.refresh}<h2 id="policy-title">Cancellation Policy</h2></div><div class="pp-mbadge">7-Day Easy Return</div><p class="pp-mpara">आप order confirm होने के <strong>24 घंटे के अंदर</strong> cancellation request कर सकते हैं।</p><ul class="pp-mlist"><li>Order dispatch होने के बाद cancellation संभव नहीं</li><li>Damaged या wrong product मिलने पर 7 दिन के अंदर complaint करें</li><li>Opened/used products return नहीं किए जाएंगे</li><li>Refund 5–7 business days में original payment method पर</li></ul><div class="pp-mhl">Return के लिए product original packaging में होना ज़रूरी है। Unboxing video होने पर claim जल्दी process होता है।</div>`,
-        contact: `<div class="pp-mtitle">${ICO.headset}<h2 id="policy-title">Contact Us</h2></div><p class="pp-mpara">Asthma की team आपकी मदद के लिए available है — सोमवार से शनिवार, सुबह 9 बजे से शाम 6 बजे तक।</p><div class="pp-cgrid"><div class="pp-citem">${ICO.phone}<div class="pp-clbl">Call / WhatsApp</div><div class="pp-cval"><a href="tel:+918860606078">+91 88606 06078</a></div></div><div class="pp-citem">${ICO.mail}<div class="pp-clbl">Email</div><div class="pp-cval"><a href="mailto:support@ssherbalindia.com">support@ssherbalindia.com</a></div></div><div class="pp-citem">${ICO.clock}<div class="pp-clbl">Support Hours</div><div class="pp-cval">Mon–Sat 9am–6pm</div></div><div class="pp-citem">${ICO.chat}<div class="pp-clbl">Response Time</div><div class="pp-cval">Within 24 hours</div></div></div>`,
+        contact: `<div class="pp-mtitle">${ICO.headset}<h2 id="policy-title">Contact Us</h2></div><p class="pp-mpara">Asthma ?? team ???? ??? ?? ??? available ???</p>`,
         disclaimer: `<div class="pp-mtitle">${ICO.alert}<h2 id="policy-title">Legal Disclaimer</h2></div><div class="pp-mbadge">Important Notice</div><p class="pp-mpara">ASTHMA-EX Powder एक Ayurvedic dietary wellness supplement है। इस product के बारे में निम्नलिखित बातें ध्यान में रखें:</p><ul class="pp-mlist"><li>यह product किसी भी बीमारी का diagnosis, treatment, cure या prevention नहीं करता</li><li>Results individual to individual अलग हो सकते हैं</li><li>Product formulation और usage की जानकारी official label पर देखें</li><li>किसी भी medical condition में उपयोग से पहले doctor से परामर्श करें</li><li>Pregnant, nursing women या किसी chronic illness वाले व्यक्ति पहले physician से consult करें</li></ul><div class="pp-mhl">Website पर दिए गए statements को किसी regulatory authority द्वारा evaluate नहीं किया गया है। यह product किसी disease को diagnose, treat, cure या prevent करने के लिए नहीं है।</div><p class="pp-mpara">Product की images, descriptions और testimonials केवल illustrative purpose के लिए हैं। Asthma किसी भी indirect या consequential loss के लिए उत्तरदायी नहीं है।</p>`
       };
       $$("[data-modal]").forEach((b) => {
